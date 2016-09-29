@@ -92,6 +92,8 @@ def pageGen(cateUrl, depth, cate_name):
                         viewUrl = "http://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia" \
                                   "/all-access/all-agents/" + newArticle + "/daily/2015080100/2016080100"
                         getView(newArticle, viewUrl, wide_lst)
+                        if len(pages) == 125000 or len(pages) == 250000 or len(pages) == 375000 or len(pages) == 500000:
+                            return
 
             except AttributeError:
                 print("there is no page under this category")
@@ -106,6 +108,9 @@ def pageGen(cateUrl, depth, cate_name):
                 if subCate not in catesCollection:
                     catesCollection.add(subCate)
                     pageGen(subCate, depth + 1, str(subCate.replace("/wiki/Category:", "")))
+                    if len(pages) == 125000 or len(pages) == 250000 or len(pages) == 375000 or len(pages) == 500000:
+                        if depth != 0:
+                            return
 
         except AttributeError:      # no more subcategories, function returns
             print("this category has no subcategory")
