@@ -7,6 +7,18 @@ import csv
 
 MAX_DEPTH = 5  # max depth that this code goes
 
+
+def should_return(length, depth):
+    if length == 125000 and depth == 2:  # if current max class equals 2 and we encounter the first restriction, we
+        return False                     # should not return
+    elif length == 250000 and depth == 3:  # the rest of the conditions have the same idea
+        return False
+    elif length == 375000 and depth == 4:
+        return False
+    else:
+        return True
+
+
 def getView(newArticle, url, wide_lst):
     try:
         page = urlopen(url)
@@ -109,7 +121,7 @@ def pageGen(cateUrl, depth, cate_name):
                     catesCollection.add(subCate)
                     pageGen(subCate, depth + 1, str(subCate.replace("/wiki/Category:", "")))
                     if len(pages) == 125000 or len(pages) == 250000 or len(pages) == 375000 or len(pages) == 500000:
-                        if depth != 0:
+                        if (should_return(len(pages), width[0]) is True) and (depth != 0):
                             return
 
         except AttributeError:      # no more subcategories, function returns
