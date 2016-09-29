@@ -1,3 +1,3 @@
-# Wikipedia-Pageview-statistics
-This repositories is build by mainly using Python 3.5. The librarlies I used here are BeautifulSoup 4, urllib, and JSON.
-This repositories aims at getting one year pageview data from each page who belongs to certain categories and use those data for time series analysis.
+# Monash-University-FIT1041-Code
+The language used in this repositories is Python 3.5 and the libraries I used are BeautifulSoup 4.5, urllib and JSON decode.
+There are two parts in this repositories and each of them generates a distinctive data set.
